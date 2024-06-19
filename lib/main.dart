@@ -86,28 +86,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => PrayerTimesCubit(
-              getPrayerTimes: GetPrayerTimes(
-                PrayerTimeRepositoryImpl(
-                  remoteDataSource: PrayerTimeRemoteDataSource(RemoteClient()),
-                ),
+      providers: [
+        BlocProvider(
+          create: (context) => PrayerTimesCubit(
+            getPrayerTimes: GetPrayerTimes(
+              PrayerTimeRepositoryImpl(
+                remoteDataSource: PrayerTimeRemoteDataSource(RemoteClient()),
               ),
             ),
           ),
-          BlocProvider(
-            create: (context) => QiblaCubit(
-              GetQiblaDirection(
-                QiblaRepositoryImpl(
-                  remoteDataSource:
-                      QiblaRemoteDataSource(remoteClient: RemoteClient()),
-                ),
+        ),
+        BlocProvider(
+          create: (context) => QiblaCubit(
+            GetQiblaDirection(
+              QiblaRepositoryImpl(
+                remoteDataSource:
+                    QiblaRemoteDataSource(remoteClient: RemoteClient()),
               ),
             ),
           ),
-        ],
-        child: const MaterialApp(home: HomePage()),
+        ),
+      ],
+      child: const MaterialApp(
+        home: HomePage(),
+      ),
     );
   }
 }
