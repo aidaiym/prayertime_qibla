@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "256699219363",
+    "project_id": "quran-test-21de1",
+    "storage_bucket": "quran-test-21de1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256699219363:android:34a9a22efe89f883002e16",
+        "android_client_info": {
+          "package_name": "com.example.prayer_tim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256699219363-sgk2u2ct5kbni3u9v5qtae397jt2lvh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA--Za3nPZ-pQp5-qqmzBBTr9Xq1FU8XyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256699219363-sgk2u2ct5kbni3u9v5qtae397jt2lvh6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "256699219363-8nqngu0vqm2sfpi8m07e0v44i5pj1lmo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.a.a"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256699219363:android:3bb8cf4b238aff28002e16",
+        "android_client_info": {
+          "package_name": "com.example.prayer_time_qubla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256699219363-nvbrtt11ilh383omq9v2ffqj6n6s4peb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.prayer_time_qubla",
+            "certificate_hash": "7a7b4083b379fe3e33964832d7492ed26ad04689"
+          }
+        },
+        {
+          "client_id": "256699219363-sgk2u2ct5kbni3u9v5qtae397jt2lvh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA--Za3nPZ-pQp5-qqmzBBTr9Xq1FU8XyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256699219363-sgk2u2ct5kbni3u9v5qtae397jt2lvh6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "256699219363-8nqngu0vqm2sfpi8m07e0v44i5pj1lmo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.a.a"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

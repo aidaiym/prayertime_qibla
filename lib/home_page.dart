@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:prayer_time_qubla/components/components.dart';
 import 'package:prayer_time_qubla/constants/text_style.dart';
@@ -79,6 +80,47 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  Future<User?> _signInWithGoogle() async {
+    try {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
+      if (googleUser == null) {
+        // The user canceled the sign-in
+        return null;
+      }
+
+      // Obtain the initial auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Force a token refresh by signing out and then signing back in
+      await _googleSignIn.signOut();
+      final GoogleSignInAccount? refreshedGoogleUser =
+          await _googleSignIn.signInSilently();
+      final GoogleSignInAuthentication refreshedGoogleAuth =
+          await refreshedGoogleUser!.authentication;
+
+      // Create a new credential with the refreshed token
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: refreshedGoogleAuth.accessToken,
+        idToken: refreshedGoogleAuth.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      final UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
+      final User? user = userCredential.user;
+
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,6 +140,20 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Column(
             children: [
+              SizedBox(
+                height: 100,
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  User? user = await _signInWithGoogle();
+                  if (user != null) {
+                    print('Signed in as ${user.displayName}');
+                  } else {
+                    print('Sign in failed');
+                  }
+                },
+                child: Text('Sign in with Google'),
+              ),
               Column(
                 children: [
                   Padding(
